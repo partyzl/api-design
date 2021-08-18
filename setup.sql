@@ -13,10 +13,12 @@ CREATE TABLE person(
     age INT CHECK(0<=age<=120),
     householdSize INT,
     addressid INT NOT NULL,
-    PRIMARY KEY (personid)
+    PRIMARY KEY (personid),
+    FOREIGN KEY (addressid) REFERENCES houseAddress(addressid)
 );
 DROP TABLE IF EXISTS house;
 CREATE TABLE house(
     addressid INT NOT NULL UNIQUE,
-    ownername VARCHAR(40) NOT NULL
+    ownername VARCHAR(40) NOT NULL,
+    FOREIGN KEY (addressid) REFERENCES houseAddress(addressid)
 );
